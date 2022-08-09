@@ -28,3 +28,18 @@ C:\Users\samsp\Documents\C#\GIT\Citric-Composer\Retsuko Sound Tool\Retsuko Sound
 C:\Users\samsp\Documents\C#\GIT\Citric-Composer\Retsuko Sound Tool\Retsuko Sound Tool\obj\Debug\Retsuko Sound Tool.csproj.CopyComplete
 C:\Users\samsp\Documents\C#\GIT\Citric-Composer\Retsuko Sound Tool\Retsuko Sound Tool\obj\Debug\Retsuko Sound Tool.exe
 C:\Users\samsp\Documents\C#\GIT\Citric-Composer\Retsuko Sound Tool\Retsuko Sound Tool\obj\Debug\Retsuko Sound Tool.pdb
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Retsuko Sound Tool\Retsuko Sound Tool\bin\Debug\Images\Retsuko.ico
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Retsuko Sound Tool\Retsuko Sound Tool\bin\Debug\Images\Retsuko.png
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Retsuko Sound Tool\Retsuko Sound Tool\bin\Debug\Retsuko Sound Tool.exe.config
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Retsuko Sound Tool\Retsuko Sound Tool\bin\Debug\Retsuko Sound Tool.exe
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Retsuko Sound Tool\Retsuko Sound Tool\bin\Debug\Retsuko Sound Tool.pdb
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Retsuko Sound Tool\Retsuko Sound Tool\bin\Debug\Syroot.BinaryData.dll
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Retsuko Sound Tool\Retsuko Sound Tool\bin\Debug\Syroot.BinaryData.xml
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Retsuko Sound Tool\Retsuko Sound Tool\obj\Debug\Retsuko Sound Tool.csproj.AssemblyReference.cache
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Retsuko Sound Tool\Retsuko Sound Tool\obj\Debug\Retsuko_Sound_Tool.MainWindow.resources
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Retsuko Sound Tool\Retsuko Sound Tool\obj\Debug\Retsuko_Sound_Tool.Properties.Resources.resources
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Retsuko Sound Tool\Retsuko Sound Tool\obj\Debug\Retsuko Sound Tool.csproj.GenerateResource.cache
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Retsuko Sound Tool\Retsuko Sound Tool\obj\Debug\Retsuko Sound Tool.csproj.CoreCompileInputs.cache
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Retsuko Sound Tool\Retsuko Sound Tool\obj\Debug\Retsuko Sound Tool.csproj.CopyComplete
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Retsuko Sound Tool\Retsuko Sound Tool\obj\Debug\Retsuko Sound Tool.exe
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Retsuko Sound Tool\Retsuko Sound Tool\obj\Debug\Retsuko Sound Tool.pdb

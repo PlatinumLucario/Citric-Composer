@@ -1,0 +1,233 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Silve\\source\\repos\\ReuNiFiCationX\\Citric-Composer\\Citric Composer\\Citric Composer\\Citric Composer.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Silve\\source\\repos\\ReuNiFiCationX\\Citric-Composer\\Citric Composer\\Citric Composer\\Citric Composer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Silve\\source\\repos\\ReuNiFiCationX\\Citric-Composer\\Citric Composer\\Citric Composer\\Citric Composer.csproj",
+        "projectName": "Citric Composer",
+        "projectPath": "C:\\Users\\Silve\\source\\repos\\ReuNiFiCationX\\Citric-Composer\\Citric Composer\\Citric Composer\\Citric Composer.csproj",
+        "packagesPath": "C:\\Users\\Silve\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Silve\\source\\repos\\ReuNiFiCationX\\Citric-Composer\\Citric Composer\\Citric Composer\\obj\\",
+        "projectStyle": "PackageReference",
+        "crossTargeting": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Silve\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0-windows",
+          "net6.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0-windows7.0": {
+            "targetAlias": "net5.0-windows",
+            "projectReferences": {
+              "C:\\Users\\Silve\\source\\repos\\ReuNiFiCationX\\Citric-Composer\\Citric Composer\\CSCore\\CSCore.csproj": {
+                "projectPath": "C:\\Users\\Silve\\source\\repos\\ReuNiFiCationX\\Citric-Composer\\Citric Composer\\CSCore\\CSCore.csproj"
+              },
+              "C:\\Users\\Silve\\source\\repos\\ReuNiFiCationX\\Citric-Composer\\Citric Composer\\SequenceDataLib\\SequenceDataLib.csproj": {
+                "projectPath": "C:\\Users\\Silve\\source\\repos\\ReuNiFiCationX\\Citric-Composer\\Citric Composer\\SequenceDataLib\\SequenceDataLib.csproj"
+              }
+            }
+          },
+          "net6.0-windows7.0": {
+            "targetAlias": "net6.0-windows",
+            "projectReferences": {
+              "C:\\Users\\Silve\\source\\repos\\ReuNiFiCationX\\Citric-Composer\\Citric Composer\\CSCore\\CSCore.csproj": {
+                "projectPath": "C:\\Users\\Silve\\source\\repos\\ReuNiFiCationX\\Citric-Composer\\Citric Composer\\CSCore\\CSCore.csproj"
+              },
+              "C:\\Users\\Silve\\source\\repos\\ReuNiFiCationX\\Citric-Composer\\Citric Composer\\SequenceDataLib\\SequenceDataLib.csproj": {
+                "projectPath": "C:\\Users\\Silve\\source\\repos\\ReuNiFiCationX\\Citric-Composer\\Citric Composer\\SequenceDataLib\\SequenceDataLib.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0-windows7.0": {
+          "targetAlias": "net5.0-windows",
+          "dependencies": {
+            "Crc32.NET": {
+              "target": "Package",
+              "version": "[1.2.0, )"
+            },
+            "NAudio": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
+            "Scintilla.NET": {
+              "target": "Package",
+              "version": "[5.1.5.4, )"
+            },
+            "System.Memory": {
+              "target": "Package",
+              "version": "[4.5.5, )"
+            },
+            "VGAudio": {
+              "target": "Package",
+              "version": "[2.2.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WindowsForms": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
+        },
+        "net6.0-windows7.0": {
+          "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "Crc32.NET": {
+              "target": "Package",
+              "version": "[1.2.0, )"
+            },
+            "NAudio": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
+            "Scintilla.NET": {
+              "target": "Package",
+              "version": "[5.1.5.4, )"
+            },
+            "System.Memory": {
+              "target": "Package",
+              "version": "[4.5.5, )"
+            },
+            "VGAudio": {
+              "target": "Package",
+              "version": "[2.2.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WindowsForms": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Silve\\source\\repos\\ReuNiFiCationX\\Citric-Composer\\Citric Composer\\SequenceDataLib\\SequenceDataLib.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Silve\\source\\repos\\ReuNiFiCationX\\Citric-Composer\\Citric Composer\\SequenceDataLib\\SequenceDataLib.csproj",
+        "projectName": "SequenceDataLib",
+        "projectPath": "C:\\Users\\Silve\\source\\repos\\ReuNiFiCationX\\Citric-Composer\\Citric Composer\\SequenceDataLib\\SequenceDataLib.csproj",
+        "packagesPath": "C:\\Users\\Silve\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Silve\\source\\repos\\ReuNiFiCationX\\Citric-Composer\\Citric Composer\\SequenceDataLib\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Silve\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Melanchall.DryWetMidi": {
+              "target": "Package",
+              "version": "[5.2.1, )"
+            },
+            "Microsoft.CSharp": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            },
+            "Syroot.IO.BinaryData": {
+              "target": "Package",
+              "version": "[4.0.4, )"
+            },
+            "System.Data.DataSetExtensions": {
+              "target": "Package",
+              "version": "[4.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

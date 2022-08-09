@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "JyJszYvuQBqi0LxRn9/SYtelQ2sdY9XqgJhHF7UKdnxTAatiQODM5F1DfMF9udayKB2W+ocPBgJljRSN4v7HQw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Silve\\source\\repos\\ReuNiFiCationX\\Citric-Composer\\Citric Composer\\SequenceDataLib\\SequenceDataLib.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Silve\\.nuget\\packages\\melanchall.drywetmidi\\5.2.1\\melanchall.drywetmidi.5.2.1.nupkg.sha512",
+    "C:\\Users\\Silve\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\Silve\\.nuget\\packages\\syroot.io.binarydata\\4.0.4\\syroot.io.binarydata.4.0.4.nupkg.sha512",
+    "C:\\Users\\Silve\\.nuget\\packages\\system.data.datasetextensions\\4.5.0\\system.data.datasetextensions.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}

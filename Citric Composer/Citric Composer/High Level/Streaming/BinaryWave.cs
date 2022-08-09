@@ -259,7 +259,7 @@ namespace CitraFileLoader {
                 chanWriter.Write(b);
             }
             bw.Position = 8;
-            bw.Write(Crc32.Crc32Algorithm.Compute(chanData.ToArray()));
+            bw.Write(Force.Crc32.Crc32Algorithm.Compute(chanData.ToArray()));
 
             //Return and clean.
             byte[] ret = o.ToArray();

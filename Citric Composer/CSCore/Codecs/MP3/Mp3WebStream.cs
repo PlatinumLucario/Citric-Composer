@@ -4,7 +4,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
-using System.Net.Configuration;
+using System.Configuration;
 using System.Reflection;
 using System.Threading;
 using CSCore.Utils;
@@ -406,7 +406,7 @@ namespace CSCore.Codecs.MP3
         private static bool SetAllowUnsafeHeaderParsing20()
         {
             //Get the assembly that contains the internal class
-            Assembly aNetAssembly = Assembly.GetAssembly(typeof (SettingsSection));
+            Assembly aNetAssembly = Assembly.GetAssembly(typeof (AppSettingsSection));
             if (aNetAssembly != null)
             {
                 //Use the assembly in order to get the internal type for the internal class

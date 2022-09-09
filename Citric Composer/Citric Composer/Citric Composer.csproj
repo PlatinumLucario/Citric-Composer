@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\packages\Costura.Fody.3.3.2\build\Costura.Fody.props" Condition="Exists('..\packages\Costura.Fody.3.3.2\build\Costura.Fody.props')" />
   <PropertyGroup>
-    <TargetFrameworks>net5.0-windows;net6.0-windows</TargetFrameworks>
+    <TargetFrameworks>net6.0-windows</TargetFrameworks>
     <OutputType>WinExe</OutputType>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -27,10 +27,14 @@
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
+    <RootNamespace>Citric_Composer</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Caesar\**" />
     <Compile Remove="CSCore\**" />
+    <EmbeddedResource Remove="Caesar\**" />
     <EmbeddedResource Remove="CSCore\**" />
+    <None Remove="Caesar\**" />
     <None Remove="CSCore\**" />
   </ItemGroup>
   <ItemGroup>
@@ -51,14 +55,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="bin\Debug\Data\Image\pause.png" />
-    <None Include="bin\Debug\Data\Image\play4.png" />
-    <None Include="Data\Image\CafeTool.ico" />
-    <None Include="Data\Image\CtrTool.ico" />
-    <None Include="Data\Image\NxTool.ico" />
-    <Content Include="caesar.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Data\Image\pause.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -70,9 +66,6 @@
   <ItemGroup>
     <ProjectReference Include="..\CSCore\CSCore.csproj" />
     <ProjectReference Include="..\SequenceDataLib\SequenceDataLib.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Caesar\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Crc32.NET" Version="1.2.0" />

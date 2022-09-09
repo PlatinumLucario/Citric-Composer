@@ -1,0 +1,12 @@
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\CSCore\bin\Debug\net5.0\cscore.snk
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\CSCore\bin\Debug\net5.0\CSCore.deps.json
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\CSCore\bin\Debug\net5.0\CSCore.dll
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\CSCore\bin\Debug\net5.0\CSCore.pdb
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\CSCore\bin\Debug\net5.0\CSCore.XML
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\CSCore\obj\Debug\net5.0\CSCore.csproj.AssemblyReference.cache
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\CSCore\obj\Debug\net5.0\CSCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\CSCore\obj\Debug\net5.0\CSCore.csproj.CoreCompileInputs.cache
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\CSCore\obj\Debug\net5.0\CSCore.dll
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\CSCore\obj\Debug\net5.0\refint\CSCore.dll
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\CSCore\obj\Debug\net5.0\CSCore.pdb
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\CSCore\obj\Debug\net5.0\ref\CSCore.dll

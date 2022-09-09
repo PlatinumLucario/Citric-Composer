@@ -1801,7 +1801,23 @@ namespace Citric_Composer
 
             while (true) {
 
-                if (!scrolling) try { timeBar.Value = (int)(((decimal)players[channelPlaying].source.Position / ((decimal)file.data.data[channelPlaying].Length * 2)) * 1440); if (playLikeGameBox.Checked) { if (players[channelPlaying].source.Position >= file.stream.loopEnd*2 && players[channelPlaying].soundOut.PlaybackState == CSCore.SoundOut.PlaybackState.Playing) { for (int i = 0; i < players.Count(); i++) { players[i].source.Position = (long)file.stream.loopStart*2; } } } } catch { }
+                if (!scrolling) 
+                    try 
+                    { 
+                        if (players == null) { return; }
+                        timeBar.Value = (int)(((decimal)players[channelPlaying].source.Position / ((decimal)file.data.data[channelPlaying].Length * 2)) * 1440); 
+                        if (playLikeGameBox.Checked) 
+                        { 
+                            if (players[channelPlaying].source.Position >= file.stream.loopEnd*2 && players[channelPlaying].soundOut.PlaybackState == CSCore.SoundOut.PlaybackState.Playing) 
+                            { 
+                                for (int i = 0; i < players.Count(); i++) 
+                                { 
+                                    players[i].source.Position = (long)file.stream.loopStart*2; 
+                                } 
+                            } 
+                        } 
+                    } 
+                    catch { }
                 bool regnMode = false;
 
                 try

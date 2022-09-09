@@ -1,0 +1,43 @@
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\bin\Debug\net5.0-windows\cscore.snk
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\bin\Debug\net5.0-windows\SequenceDataLib.deps.json
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\bin\Debug\net5.0-windows\SequenceDataLib.runtimeconfig.json
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\bin\Debug\net5.0-windows\SequenceDataLib.runtimeconfig.dev.json
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\bin\Debug\net5.0-windows\SequenceDataLib.exe
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\bin\Debug\net5.0-windows\Data\Image\pause.png
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\bin\Debug\net5.0-windows\Data\Image\play4.png
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\bin\Debug\net5.0-windows\version.bin
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\bin\Debug\net5.0-windows\Citric Composer.exe
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\bin\Debug\net5.0-windows\Citric Composer.dll.config
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\bin\Debug\net5.0-windows\Citric Composer.deps.json
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\bin\Debug\net5.0-windows\Citric Composer.runtimeconfig.json
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\bin\Debug\net5.0-windows\Citric Composer.runtimeconfig.dev.json
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\bin\Debug\net5.0-windows\Citric Composer.dll
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\bin\Debug\net5.0-windows\Citric Composer.pdb
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\bin\Debug\net5.0-windows\CSCore.xml
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\bin\Debug\net5.0-windows\SequenceDataLib.dll.config
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\obj\Debug\net5.0-windows\Citric Composer.csproj.AssemblyReference.cache
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\obj\Debug\net5.0-windows\Citric_Composer.AboutWindow.resources
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\obj\Debug\net5.0-windows\Citric_Composer.BrewsterAbout.resources
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\obj\Debug\net5.0-windows\Citric_Composer.EditorBase.resources
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\obj\Debug\net5.0-windows\Citric_Composer.FileWizard.resources
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\obj\Debug\net5.0-windows\Citric_Composer.GoldiAbout.resources
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\obj\Debug\net5.0-windows\Citric_Composer.IsabelleAbout.resources
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\obj\Debug\net5.0-windows\Citric_Composer.IsabelleSoundEditor.resources
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\obj\Debug\net5.0-windows\Citric_Composer.MainWindowOLD.resources
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\obj\Debug\net5.0-windows\Citric_Composer.Properties.Resources.resources
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\obj\Debug\net5.0-windows\Citric_Composer.Rolf_Rescource_Researcher.resources
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\obj\Debug\net5.0-windows\Citric_Composer.RolfAbout.resources
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\obj\Debug\net5.0-windows\Citric_Composer.SaveCloseDialog.resources
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\obj\Debug\net5.0-windows\Citric_Composer.SaveQuitDialog.resources
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\obj\Debug\net5.0-windows\Citric_Composer.Sound3dEditor.resources
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\obj\Debug\net5.0-windows\Citric_Composer.SoundEditor.resources
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\obj\Debug\net5.0-windows\Citric_Composer.VersionSelector.resources
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\obj\Debug\net5.0-windows\Citric Composer.csproj.GenerateResource.cache
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\obj\Debug\net5.0-windows\Citric Composer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\obj\Debug\net5.0-windows\Citric Composer.csproj.CoreCompileInputs.cache
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\obj\Debug\net5.0-windows\Citric Composer.csproj.CopyComplete
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\obj\Debug\net5.0-windows\Citric Composer.dll
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\obj\Debug\net5.0-windows\refint\Citric Composer.dll
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\obj\Debug\net5.0-windows\Citric Composer.pdb
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\obj\Debug\net5.0-windows\Citric Composer.genruntimeconfig.cache
+C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\Citric Composer\obj\Debug\net5.0-windows\ref\Citric Composer.dll

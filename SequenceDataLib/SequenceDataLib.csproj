@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\Citric Composer\packages\Costura.Fody.4.0.0\build\Costura.Fody.props" Condition="Exists('..\..\Citric Composer\packages\Costura.Fody.4.0.0\build\Costura.Fody.props')" />
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <RootNamespace>SequenceDataLib</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="Melanchall.DryWetMidi" Version="5.2.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Syroot.IO.BinaryData" Version="4.0.4" />
+  </ItemGroup>
+  <Import Project="..\..\Citric Composer\packages\Fody.5.0.0\build\Fody.targets" Condition="Exists('..\..\Citric Composer\packages\Fody.5.0.0\build\Fody.targets')" />
+</Project>

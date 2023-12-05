@@ -1,6 +1,21 @@
-
-Citric Composer/SolarFileLoader/obj/Debug/
-
-Citric Composer/Solar Audio Slayer/obj/Debug/Costura/
-
-Citric Composer/Citric Composer/obj/Debug/Costura/
+/.vs
+/bin
+/obj
+/SolarFileLoader/bin
+/SolarFileLoader/obj
+/Solar Audio Slayer/bin
+/Solar Audio Slayer/obj
+/packages
+/Citric Composer/bin
+/Citric Composer/obj
+/SequenceDataLib/bin
+/SequenceDataLib/obj
+/SequenceDataLib/packages
+/CSCore/bin
+/CSCore/obj
+/Koopa Harmony/bin
+/Koopa Harmony/obj
+/Koopa Harmony/packages
+/Retsuko Sound Tool/bin
+/Retsuko Sound Tool/obj
+/Retsuko Sound Tool/packages

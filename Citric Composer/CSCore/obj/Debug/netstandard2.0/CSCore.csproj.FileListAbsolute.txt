@@ -1,3 +1,0 @@
-C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\CSCore\obj\Debug\netstandard2.0\CSCore.csproj.AssemblyReference.cache
-C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\CSCore\obj\Debug\netstandard2.0\CSCore.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Silve\source\repos\ReuNiFiCationX\Citric-Composer\Citric Composer\CSCore\obj\Debug\netstandard2.0\CSCore.csproj.CoreCompileInputs.cache

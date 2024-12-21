@@ -72,7 +72,8 @@ namespace KoopaHarmony
         public Splitter[] eventSplitters = new Splitter[64]; //Event splitters.
 
         //Channel player.
-        public struct channelPlayer {
+        public struct channelPlayer
+        {
             public byte[] file; //File.
             public WaveOutEvent player; //Player.
             public CSCore.WaveFormat player2;
@@ -135,7 +136,8 @@ namespace KoopaHarmony
 
         //Info stuff.
         #region infoStuff
-        public void doInfoStuff() {
+        public void doInfoStuff()
+        {
 
             if (tree.SelectedNode.Parent != null && idFileOpen)
             {
@@ -155,12 +157,13 @@ namespace KoopaHarmony
                     {
                         if (sampleIdBox.Value > file.stream.loopEnd) { afterLoopBox.Checked = true; sampleIdBox.Value = sampleIdBox.Value - file.stream.loopEnd + file.stream.loopStart; } else { afterLoopBox.Checked = false; }
                     }
-                    selectedEvent.Text = "Selected Event: Event " + (tree.SelectedNode.Index+1);
+                    selectedEvent.Text = "Selected Event: Event " + (tree.SelectedNode.Index + 1);
 
                 }
 
             }
-            else if (idFileOpen) {
+            else if (idFileOpen)
+            {
 
                 //Sound Project Info.
                 if (tree.SelectedNode.Index == 0)
@@ -173,10 +176,11 @@ namespace KoopaHarmony
                     projectPanel.Enabled = true;
                     unknownValueBox.Value = idFile.unknown;
                     tempoBox.Value = idFile.tempo;
-                    selectedEvent.Text =  "Selected Event: NULL (Select an event first!)";
+                    selectedEvent.Text = "Selected Event: NULL (Select an event first!)";
 
                 }
-                else {
+                else
+                {
 
                     noInfoPanel.Show();
                     projectPanel.Hide();
@@ -191,7 +195,8 @@ namespace KoopaHarmony
         }
 
         #region trackStuff
-        public void volumeTrack(object sender, EventArgs e) {
+        public void volumeTrack(object sender, EventArgs e)
+        {
             CISP.trackInfo t = file.tracks[tree.SelectedNode.Index];
             t.volume = (byte)volumeBox.Value;
             file.tracks[tree.SelectedNode.Index] = t;
@@ -221,13 +226,15 @@ namespace KoopaHarmony
                 if (channelString.Length > 0)
                 {
                     t.channelCount = (UInt32)channelString.Length / 2 + 1;
-                    for (int i = 0; i < t.channelCount; i += 1) {
-                        t.channels.Add((byte)(byte.Parse(new string(channelString[i*2], 1))-1));
+                    for (int i = 0; i < t.channelCount; i += 1)
+                    {
+                        t.channels.Add((byte)(byte.Parse(new string(channelString[i * 2], 1)) - 1));
                     }
                 }
                 file.tracks[tree.SelectedNode.Index] = t;
             }
-            catch {
+            catch
+            {
                 MessageBox.Show("Enter like this: 1;2");
             }
         }
@@ -247,7 +254,8 @@ namespace KoopaHarmony
 
         //Update nodes.
         #region updateNodes
-        public void updateNodes() {
+        public void updateNodes()
+        {
 
             //Start stuff.
             tree.BeginUpdate();
@@ -261,14 +269,15 @@ namespace KoopaHarmony
             {
                 tree.Nodes[1].Nodes.RemoveAt(0);
             }
-            
+
 
             //Only if file is open.
             if (idFileOpen)
             {
-                
-                for (int i = 0; i < idFile.sampleNumbers.Count; i++) {
-                    tree.Nodes[1].Nodes.Add("Event " + (i+1), "Event " + (i+1), 2, 2);
+
+                for (int i = 0; i < idFile.sampleNumbers.Count; i++)
+                {
+                    tree.Nodes[1].Nodes.Add("Event " + (i + 1), "Event " + (i + 1), 2, 2);
                     tree.Nodes[1].Nodes[i].ContextMenuStrip = nodeMenu;
                 }
                 tree.Nodes[1].ContextMenuStrip = rootMenu;
@@ -277,7 +286,8 @@ namespace KoopaHarmony
                 showEvents();
 
             }
-            else {
+            else
+            {
                 tree.Nodes[1].ContextMenuStrip = null;
 
                 /*
@@ -307,7 +317,8 @@ namespace KoopaHarmony
         }
         #endregion
 
-        public void showEvents() {
+        public void showEvents()
+        {
 
             eventPanel.Refresh();
 
@@ -416,7 +427,8 @@ namespace KoopaHarmony
             {
                 MessageBox.Show("You can only have 64 events per song!");
             }
-            else {
+            else
+            {
                 idFile.sampleNumbers.Add(0);
                 idFile.danceMoves.Add(2);
                 updateNodes();
@@ -448,11 +460,11 @@ namespace KoopaHarmony
                 UInt32 temp1 = idFile.sampleNumbers[tree.SelectedNode.Index];
                 byte temp12 = idFile.danceMoves[tree.SelectedNode.Index];
 
-                UInt32 temp2 = idFile.sampleNumbers[tree.SelectedNode.Index-1];
-                byte temp22 = idFile.danceMoves[tree.SelectedNode.Index-1];
+                UInt32 temp2 = idFile.sampleNumbers[tree.SelectedNode.Index - 1];
+                byte temp22 = idFile.danceMoves[tree.SelectedNode.Index - 1];
 
                 idFile.sampleNumbers[tree.SelectedNode.Index] = temp2;
-                idFile.sampleNumbers[tree.SelectedNode.Index-1] = temp1;
+                idFile.sampleNumbers[tree.SelectedNode.Index - 1] = temp1;
                 idFile.danceMoves[tree.SelectedNode.Index] = temp22;
                 idFile.danceMoves[tree.SelectedNode.Index - 1] = temp12;
                 updateNodes();
@@ -480,7 +492,7 @@ namespace KoopaHarmony
 
         private void replaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -548,14 +560,16 @@ namespace KoopaHarmony
         {
 
             gameFileSelectorBox.ShowDialog();
-            if (gameFileSelectorBox.FileName != "") {
+            if (gameFileSelectorBox.FileName != "")
+            {
 
                 if (gameFileSelectorBox.FilterIndex == 1)
                 {
 
                     //Have user select output.
                     saveWaveBox.ShowDialog();
-                    if (saveWaveBox.FileName != "") {
+                    if (saveWaveBox.FileName != "")
+                    {
 
                         //Do actual conversions.
                         b_wav b = new b_wav();
@@ -679,19 +693,23 @@ namespace KoopaHarmony
             if (idFileOpen) saveAs();
         }
 
-        public void save() {
+        public void save()
+        {
             if (idFileNamePath == "")
             {
                 saveAs();
             }
-            else {
+            else
+            {
                 File.WriteAllBytes(idFileNamePath, idFile.toBytes());
             }
         }
 
-        public void saveAs() {
+        public void saveAs()
+        {
             saveID.ShowDialog();
-            if (saveID.FileName != "") {
+            if (saveID.FileName != "")
+            {
                 idFileNamePath = saveID.FileName;
                 saveID.FileName = "";
                 this.Text = "Koopa Harmony - " + Path.GetFileName(idFileNamePath);
@@ -782,7 +800,8 @@ namespace KoopaHarmony
                 }
 
             }
-            catch {
+            catch
+            {
                 MessageBox.Show("You can't play channels that don't exist! :p");
             }
 
@@ -820,7 +839,8 @@ namespace KoopaHarmony
 
         //Load channel files.
         #region loadChannelFiles
-        public void loadChannelFiles() {
+        public void loadChannelFiles()
+        {
 
             if (players != null)
             {
@@ -832,7 +852,8 @@ namespace KoopaHarmony
             }
 
             players = new channelPlayer[file.channelData.Count];
-            for (int i = 0; i < file.channelData.Count; i++) {
+            for (int i = 0; i < file.channelData.Count; i++)
+            {
 
                 //Write the RIFF.
                 MemoryStream channelData = new MemoryStream();
@@ -876,7 +897,8 @@ namespace KoopaHarmony
 
         private void volume_Scroll(object sender, EventArgs e)
         {
-            try {
+            try
+            {
                 foreach (channelPlayer p in players)
                 {
                     if (p.player != null)
@@ -884,7 +906,8 @@ namespace KoopaHarmony
                         p.player.Volume = (float)volume.Value / (float)100;
                     }
                 }
-            } catch { }
+            }
+            catch { }
         }
 
         #endregion
@@ -918,7 +941,8 @@ namespace KoopaHarmony
                 for (int i = 0; i < players.Length; i++)
                 {
 
-                    if (players[i].soundOut == null) {
+                    if (players[i].soundOut == null)
+                    {
 
                         players[i].soundOut = new CSCore.SoundOut.WasapiOut();
                         players[i].soundOut.Initialize(players[i].source);
@@ -978,23 +1002,29 @@ namespace KoopaHarmony
 
 
         //Loop
-        public void loop() {
+        public void loop()
+        {
 
-            while (true) {
+            while (true)
+            {
 
-                if (!scrolling) try { timeBar.Value = (int)(((decimal)players[0].source.Position / ((decimal)file.channelData[0].Length * 2)) * 1440); if (playLikeGameBox.Checked) { if (players[0].source.Position >= file.stream.loopEnd*2 && players[0].soundOut.PlaybackState == CSCore.SoundOut.PlaybackState.Playing) { for (int i = 0; i < players.Count(); i++) { players[i].source.Position = (long)file.stream.loopStart*2; } } } } catch { }
-                
+                if (!scrolling) if (players is not null) try { timeBar.Value = (int)(((decimal)players[0].source.Position / ((decimal)file.channelData[0].Length * 2)) * 1440); if (playLikeGameBox.Checked) { if (players[0].source.Position >= file.stream.loopEnd * 2 && players[0].soundOut.PlaybackState == CSCore.SoundOut.PlaybackState.Playing) { for (int i = 0; i < players.Count(); i++) { players[i].source.Position = (long)file.stream.loopStart * 2; } } } } catch { }
+
                 try
                 {
-                    if (!scrollingLeft) spltStart.SplitPosition = (int)((decimal)file.stream.loopStart / (decimal)file.channelData[0].Length * (decimal)pnlLoop.Size.Width);
-                    if (!scrollingRight) spltEnd.SplitPosition = pnlLoop.Size.Width - (int)((decimal)file.stream.loopEnd / (decimal)file.channelData[0].Length * (decimal)pnlLoop.Size.Width);
+                    if (file is not null)
+                    {
+                        if (!scrollingLeft) spltStart.SplitPosition = (int)((decimal)file.stream.loopStart / (decimal)file.channelData[0].Length * (decimal)pnlLoop.Size.Width);
+                        if (!scrollingRight) spltEnd.SplitPosition = pnlLoop.Size.Width - (int)((decimal)file.stream.loopEnd / (decimal)file.channelData[0].Length * (decimal)pnlLoop.Size.Width);
+                    }
                 }
                 catch { }
 
-                try { if (file.channelData.Count() == 0) { playPauseButton.Enabled = false; stopButton.Enabled = false; timeBar.Enabled = false; spltStart.Enabled = false; spltEnd.Enabled = false; } else { playPauseButton.Enabled = true; stopButton.Enabled = true; timeBar.Enabled = true; } } catch { }
+                if (file is not null) try { if (file.channelData.Count() == 0) { playPauseButton.Enabled = false; stopButton.Enabled = false; timeBar.Enabled = false; spltStart.Enabled = false; spltEnd.Enabled = false; } else { playPauseButton.Enabled = true; stopButton.Enabled = true; timeBar.Enabled = true; } } catch { }
 
                 //Current sample.
-                if (fileOpen && players != null) {
+                if (fileOpen && players != null)
+                {
                     if (players[0].source != null)
                     {
                         currentSample.Text = "Current Sample: " + players[0].source.Position / 2;
@@ -1101,7 +1131,8 @@ namespace KoopaHarmony
                         catch { }
 
                     }
-                    else {
+                    else
+                    {
                         gotoSampleBox.Enabled = false;
                         gotoSampleButton.Enabled = false;
                         gotoSampleBox.Maximum = 100;
@@ -1110,12 +1141,16 @@ namespace KoopaHarmony
                 else
                 {
                     currentSample.Text = "Current Sample: NULL (Import a sound file first!)";
-                    gotoSampleBox.Enabled = false;
-                    gotoSampleButton.Enabled = false;
-                    newEventButton.Enabled = false;
-                    setEventButton.Enabled = false;
-                    jumpToSampleButton.Enabled = false;
-                    afterLoopBox.Enabled = false;
+                    try
+                    {
+                        gotoSampleBox.Enabled = false;
+                        gotoSampleButton.Enabled = false;
+                        newEventButton.Enabled = false;
+                        setEventButton.Enabled = false;
+                        jumpToSampleButton.Enabled = false;
+                        afterLoopBox.Enabled = false;
+                    }
+                    catch { }
                 }
 
             }
@@ -1130,7 +1165,7 @@ namespace KoopaHarmony
         private void setLoopStartButton_Click(object sender, EventArgs e)
         {
             file.stream.loop = 1;
-            file.stream.loopStart = (UInt32)(players[0].source.Position/2);
+            file.stream.loopStart = (UInt32)(players[0].source.Position / 2);
             doInfoStuff();
 
             spltStart.SplitPosition = (int)((decimal)file.stream.loopStart / (decimal)file.channelData[0].Length * (decimal)pnlLoop.Size.Width);
@@ -1176,7 +1211,8 @@ namespace KoopaHarmony
 
                 }
             }
-            else {
+            else
+            {
 
                 MessageBox.Show("You need at least one channel to save first!");
 
@@ -1190,7 +1226,8 @@ namespace KoopaHarmony
         {
 
             int j = 0;
-            if (j == 0 || j == 1) {
+            if (j == 0 || j == 1)
+            {
 
                 try
                 {
@@ -1239,7 +1276,7 @@ namespace KoopaHarmony
                 channelPanel.Hide();
                 trackPanel.Hide();
                 noInfoPanel.Show();
-                
+
                 anyFileSelectorSound.ShowDialog();
                 if (anyFileSelectorSound.FileName != "")
                 {
@@ -1248,144 +1285,146 @@ namespace KoopaHarmony
                     fileOpen = true;
 
 
-                    if (anyFileSelectorSound.FileName.EndsWith(".wav")) { 
-                            file.seekSize = 0;
-                    file.seekBlock = new byte[0];
-                    file.tracks = new List<CISP.trackInfo>();
-                    file.channelData = new List<UInt16[]>();
-                    RIFF r = new RIFF();
-                    r.load(File.ReadAllBytes(anyFileSelectorSound.FileName));
-                    file.stream.sampleRate = r.fmt.sampleRate;
-                    int channelLength = r.data.data.Length / r.fmt.numChannels;
-                    if (r.fmt.bitsPerSample != 16 || r.fmt.chunkFormat != 1)
+                    if (anyFileSelectorSound.FileName.EndsWith(".wav"))
                     {
-                        MessageBox.Show("Not PCM16 Wave!");
-                    }
-                    else
-                    {
-
-                        file.stream.sampleRate = r.fmt.sampleRate;
-
-                        //Add the channels.
-                        List<UInt16>[] soundData = new List<UInt16>[r.fmt.numChannels];
-                        for (int i = 0; i < soundData.Count(); i++)
-                        {
-                            soundData[i] = new List<UInt16>();
-
-                            MemoryStream src = new MemoryStream(r.data.data);
-                            EndianBinaryReader br = new EndianBinaryReader(src);
-
-                            br.Stream.Position = i * 2;
-
-                            while (br.Stream.Position < r.data.chunkSize)
-                            {
-
-                                soundData[i].Add(br.ReadUInt16());
-                                try { for (int j2 = 1; j2 < r.fmt.numChannels; j2++) { br.ReadUInt16(); } } catch { }
-
-                            }
-                        }
-
-                        //Now convert the corrected data per channel to the samples.
+                        file.seekSize = 0;
+                        file.seekBlock = new byte[0];
+                        file.tracks = new List<CISP.trackInfo>();
                         file.channelData = new List<UInt16[]>();
-                        foreach (List<UInt16> x in soundData)
+                        RIFF r = new RIFF();
+                        r.load(File.ReadAllBytes(anyFileSelectorSound.FileName));
+                        file.stream.sampleRate = r.fmt.sampleRate;
+                        int channelLength = r.data.data.Length / r.fmt.numChannels;
+                        if (r.fmt.bitsPerSample != 16 || r.fmt.chunkFormat != 1)
                         {
-                            file.channelData.Add(x.ToArray());
+                            MessageBox.Show("Not PCM16 Wave!");
+                        }
+                        else
+                        {
+
+                            file.stream.sampleRate = r.fmt.sampleRate;
+
+                            //Add the channels.
+                            List<UInt16>[] soundData = new List<UInt16>[r.fmt.numChannels];
+                            for (int i = 0; i < soundData.Count(); i++)
+                            {
+                                soundData[i] = new List<UInt16>();
+
+                                MemoryStream src = new MemoryStream(r.data.data);
+                                EndianBinaryReader br = new EndianBinaryReader(src);
+
+                                br.Stream.Position = i * 2;
+
+                                while (br.Stream.Position < r.data.chunkSize)
+                                {
+
+                                    soundData[i].Add(br.ReadUInt16());
+                                    try { for (int j2 = 1; j2 < r.fmt.numChannels; j2++) { br.ReadUInt16(); } } catch { }
+
+                                }
+                            }
+
+                            //Now convert the corrected data per channel to the samples.
+                            file.channelData = new List<UInt16[]>();
+                            foreach (List<UInt16> x in soundData)
+                            {
+                                file.channelData.Add(x.ToArray());
+                            }
+
+                            file.stream.loopEnd = (UInt32)file.channelData[0].Length;
+
                         }
 
-                        file.stream.loopEnd = (UInt32)file.channelData[0].Length;
-
                     }
 
-                }
-
-                    if (anyFileSelectorSound.FileName.EndsWith(".bcwav") || anyFileSelectorSound.FileName.EndsWith(".bfwav")) {
-                            b_wav b = new b_wav();
-                    b.load(File.ReadAllBytes(anyFileSelectorSound.FileName));
-                    file.seekSize = 0;
-                    file.seekBlock = new byte[0];
-                    file.stream.loop = b.info.loop;
-                    file.stream.loopEnd = b.info.loopEnd;
-                    file.stream.loopStart = b.info.loopStart;
-                    file.stream.sampleRate = b.info.samplingRate;
-                    file.tracks = new List<CISP.trackInfo>();
-                    file.channelData = new List<UInt16[]>();
-
-                    //Import due to encoding.
-                    switch (b.info.soundEncoding)
+                    if (anyFileSelectorSound.FileName.EndsWith(".bcwav") || anyFileSelectorSound.FileName.EndsWith(".bfwav"))
                     {
+                        b_wav b = new b_wav();
+                        b.load(File.ReadAllBytes(anyFileSelectorSound.FileName));
+                        file.seekSize = 0;
+                        file.seekBlock = new byte[0];
+                        file.stream.loop = b.info.loop;
+                        file.stream.loopEnd = b.info.loopEnd;
+                        file.stream.loopStart = b.info.loopStart;
+                        file.stream.sampleRate = b.info.samplingRate;
+                        file.tracks = new List<CISP.trackInfo>();
+                        file.channelData = new List<UInt16[]>();
 
-                        case 0:
-                            MessageBox.Show("Unsupported Data type! Must be PCM16 or DSPADPCM!");
-                            break;
+                        //Import due to encoding.
+                        switch (b.info.soundEncoding)
+                        {
 
-                        case 1:
-                            file.stream.sampleRate = b.info.samplingRate;
-                            file.stream.loopEnd = b.info.loopEnd;
-                            file.stream.loop = b.info.loop;
-                            file.stream.loopStart = b.info.loopStart;
-                            for (int i = 0; i < b.data.pcm16.Count; i++)
-                            {
-                                file.channelData.Add(b.data.pcm16[i]);
-                            }
-                            break;
+                            case 0:
+                                MessageBox.Show("Unsupported Data type! Must be PCM16 or DSPADPCM!");
+                                break;
 
-                        case 2:
-                            b_wav v2 = b;
-                            b = b.toRiff().toGameWavPCM();
-                            b.update(endianNess.big);
-                            file.stream.sampleRate = b.info.samplingRate;
-                            file.stream.loopEnd = v2.info.loopEnd;
-                            file.stream.loop = v2.info.loop;
-                            file.stream.loopStart = v2.info.loopStart;
-                            foreach (UInt16[] u in b.data.pcm16)
-                            {
-                                file.channelData.Add(u);
-                            }
+                            case 1:
+                                file.stream.sampleRate = b.info.samplingRate;
+                                file.stream.loopEnd = b.info.loopEnd;
+                                file.stream.loop = b.info.loop;
+                                file.stream.loopStart = b.info.loopStart;
+                                for (int i = 0; i < b.data.pcm16.Count; i++)
+                                {
+                                    file.channelData.Add(b.data.pcm16[i]);
+                                }
+                                break;
 
-                            break;
-
-                        case 3:
-                            MessageBox.Show("Unsupported Data type! Must be PCM16 or DSPADPCM!");
-                            break;
-
-                    }
-
-
-                }
-
-                            if (anyFileSelectorSound.FileName.EndsWith("stm"))
-                            {
-                                b_stm s = new b_stm();
-                                s.load(File.ReadAllBytes(anyFileSelectorSound.FileName));
-                                b_wav v = new b_wav();
-                                v = s.toRiff().toGameWavPCM();
-                                v.update(endianNess.big);
-                                file.stream.sampleRate = v.info.samplingRate;
-                                file.stream.loopEnd = s.info.stream.loopEnd;
-                                file.stream.loop = s.info.stream.loop;
-                                file.stream.loopStart = s.info.stream.loopStart;
-                                file.tracks = new List<CISP.trackInfo>();
-                                file.channelData = new List<UInt16[]>();
-                                foreach (UInt16[] u in v.data.pcm16)
+                            case 2:
+                                b_wav v2 = b;
+                                b = b.toRiff().toGameWavPCM();
+                                b.update(endianNess.big);
+                                file.stream.sampleRate = b.info.samplingRate;
+                                file.stream.loopEnd = v2.info.loopEnd;
+                                file.stream.loop = v2.info.loop;
+                                file.stream.loopStart = v2.info.loopStart;
+                                foreach (UInt16[] u in b.data.pcm16)
                                 {
                                     file.channelData.Add(u);
                                 }
 
-                                for (int i = 0; i < s.info.track.Count; i++)
-                                {
-                                    CISP.trackInfo t = new CISP.trackInfo();
-                                    b_stm.infoBlock.trackInfo t2 = s.info.track[i];
-                                    t.channelCount = t2.byteTable.count;
-                                    t.channels = t2.byteTable.channelIndexes;
-                                    t.flags = t2.flags;
-                                    t.magic = "TRAC".ToString();
-                                    t.pan = t2.pan;
-                                    t.volume = t2.volume;
-                                    file.tracks.Add(t);
-                                }
+                                break;
 
-                            }
+                            case 3:
+                                MessageBox.Show("Unsupported Data type! Must be PCM16 or DSPADPCM!");
+                                break;
+
+                        }
+
+
+                    }
+
+                    if (anyFileSelectorSound.FileName.EndsWith("stm"))
+                    {
+                        b_stm s = new b_stm();
+                        s.load(File.ReadAllBytes(anyFileSelectorSound.FileName));
+                        b_wav v = new b_wav();
+                        v = s.toRiff().toGameWavPCM();
+                        v.update(endianNess.big);
+                        file.stream.sampleRate = v.info.samplingRate;
+                        file.stream.loopEnd = s.info.stream.loopEnd;
+                        file.stream.loop = s.info.stream.loop;
+                        file.stream.loopStart = s.info.stream.loopStart;
+                        file.tracks = new List<CISP.trackInfo>();
+                        file.channelData = new List<UInt16[]>();
+                        foreach (UInt16[] u in v.data.pcm16)
+                        {
+                            file.channelData.Add(u);
+                        }
+
+                        for (int i = 0; i < s.info.track.Count; i++)
+                        {
+                            CISP.trackInfo t = new CISP.trackInfo();
+                            b_stm.infoBlock.trackInfo t2 = s.info.track[i];
+                            t.channelCount = t2.byteTable.count;
+                            t.channels = t2.byteTable.channelIndexes;
+                            t.flags = t2.flags;
+                            t.magic = "TRAC".ToString();
+                            t.pan = t2.pan;
+                            t.volume = t2.volume;
+                            file.tracks.Add(t);
+                        }
+
+                    }
 
                     if (anyFileSelectorSound.FileName.EndsWith(".cisp"))
                     {
@@ -1407,7 +1446,8 @@ namespace KoopaHarmony
 
 
         //Fix resizing.
-        private void formResized(object sender, EventArgs e) {
+        private void formResized(object sender, EventArgs e)
+        {
             if (playing)
             {
 
@@ -1417,14 +1457,17 @@ namespace KoopaHarmony
             else
             {
 
-                try { if (players[0].player.PlaybackState == PlaybackState.Paused) { timeBar.Value = (int)(((decimal)players[0].player.GetPosition() / ((decimal)file.channelData[0].Length * 2)) * 1440); } } catch { }
+                if (players is not null) try { if (players[0].player.PlaybackState == PlaybackState.Paused) { timeBar.Value = (int)(((decimal)players[0].player.GetPosition() / ((decimal)file.channelData[0].Length * 2)) * 1440); } } catch { }
 
             }
 
             try
             {
-                spltStart.SplitPosition = (int)((decimal)file.stream.loopStart / (decimal)file.channelData[0].Length * (decimal)pnlLoop.Size.Width);
-                spltEnd.SplitPosition = pnlLoop.Size.Width - (int)((decimal)file.stream.loopEnd / (decimal)file.channelData[0].Length * (decimal)pnlLoop.Size.Width);
+                if (file is not null)
+                {
+                    spltStart.SplitPosition = (int)((decimal)file.stream.loopStart / (decimal)file.channelData[0].Length * (decimal)pnlLoop.Size.Width);
+                    spltEnd.SplitPosition = pnlLoop.Size.Width - (int)((decimal)file.stream.loopEnd / (decimal)file.channelData[0].Length * (decimal)pnlLoop.Size.Width);
+                }
             }
             catch { }
         }
@@ -1440,10 +1483,12 @@ namespace KoopaHarmony
         {
 
             saveGameFile.ShowDialog();
-            if (saveGameFile.FileName != "") {
+            if (saveGameFile.FileName != "")
+            {
 
                 //See what file to save.
-                switch (saveGameFile.FilterIndex) {
+                switch (saveGameFile.FilterIndex)
+                {
 
                     case 1:
                         file.update();
@@ -1461,7 +1506,8 @@ namespace KoopaHarmony
 
                         List<UInt16[]> bak = file.channelData;
 
-                        for (int i = 0; i < file.channelData.Count; i++) {
+                        for (int i = 0; i < file.channelData.Count; i++)
+                        {
 
                             List<UInt16> sb22 = file.channelData[i].ToList();
                             sb22.RemoveRange((int)file.stream.loopEnd, sb22.Count - (int)file.stream.loopEnd);
@@ -1614,7 +1660,8 @@ namespace KoopaHarmony
                 }
 
             }
-            else {
+            else
+            {
 
                 this.Close();
 
@@ -1676,9 +1723,11 @@ namespace KoopaHarmony
 
             gameFileSelectorBox.ShowDialog();
 
-            if (gameFileSelectorBox.FileName != "") {
+            if (gameFileSelectorBox.FileName != "")
+            {
 
-                switch (gameFileSelectorBox.FilterIndex) {
+                switch (gameFileSelectorBox.FilterIndex)
+                {
 
                     case 1:
 
@@ -1687,9 +1736,11 @@ namespace KoopaHarmony
 
                         saveGameFile.ShowDialog();
 
-                        if (saveGameFile.FileName != "") {
+                        if (saveGameFile.FileName != "")
+                        {
 
-                            switch (saveGameFile.FilterIndex) {
+                            switch (saveGameFile.FilterIndex)
+                            {
 
                                 case 1:
                                     File.WriteAllBytes(saveGameFile.FileName, b.toBytes(endianNess.big));
@@ -1804,7 +1855,8 @@ namespace KoopaHarmony
         }
 
         //Form closing.
-        public void formClosing(object sender, System.EventArgs e) {
+        public void formClosing(object sender, System.EventArgs e)
+        {
 
             try
             {
@@ -1832,7 +1884,8 @@ namespace KoopaHarmony
 
             scrolling = false;
 
-            if (true) {
+            if (true)
+            {
 
                 try
                 {
@@ -1952,11 +2005,12 @@ namespace KoopaHarmony
             {
                 if (players[0].source != null)
                 {
-                    for (int i = 0; i < players.Length; i++) {
+                    for (int i = 0; i < players.Length; i++)
+                    {
 
                         UInt32 sampleNumber = idFile.sampleNumbers[tree.SelectedNode.Index];
                         if (sampleNumber > file.stream.loopEnd) { sampleNumber = sampleNumber - file.stream.loopEnd + file.stream.loopStart; }
-                        players[i].source.Position = sampleNumber*2;
+                        players[i].source.Position = sampleNumber * 2;
 
                     }
                 }
@@ -1987,7 +2041,7 @@ namespace KoopaHarmony
 
             idFile.sampleNumbers[tree.SelectedNode.Index] = (UInt32)sampleIdBox.Value;
             if (afterLoopBox.Checked && afterLoopBox.Enabled) { idFile.sampleNumbers[tree.SelectedNode.Index] += file.stream.loopEnd - file.stream.loopStart; }
-            idFile.danceMoves[tree.SelectedNode.Index] = (byte)(danceBox.SelectedIndex+1);
+            idFile.danceMoves[tree.SelectedNode.Index] = (byte)(danceBox.SelectedIndex + 1);
             showEvents();
 
         }
@@ -2000,7 +2054,8 @@ namespace KoopaHarmony
             {
                 MessageBox.Show("You can only have 64 events per song!");
             }
-            else {
+            else
+            {
                 idFile.danceMoves.Add(2);
                 idFile.sampleNumbers.Add((UInt32)(players[0].source.Position / 2));
                 updateNodes();
@@ -2019,7 +2074,8 @@ namespace KoopaHarmony
                 showEvents();
 
             }
-            else {
+            else
+            {
                 MessageBox.Show("No event selected!");
             }
         }
@@ -2040,7 +2096,8 @@ namespace KoopaHarmony
                 }
 
             }
-            else {
+            else
+            {
                 g.DrawLine(p, 0, 0, 0, 200);
             }
 

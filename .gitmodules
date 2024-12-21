@@ -1,0 +1,12 @@
+[submodule "GotaSoundIO"]
+	path = GotaSoundIO
+	url = https://github.com/PlatinumLucario/GotaSoundIO.git
+	branch = modern-dotnet
+[submodule "GotaSoundBank"]
+	path = GotaSoundBank
+	url = https://github.com/PlatinumLucario/GotaSoundBank.git
+	branch = modern-dotnet
+[submodule "GotaSequenceLib"]
+	path = GotaSequenceLib
+	url = https://github.com/PlatinumLucario/GotaSequenceLib.git
+	branch = modern-dotnet

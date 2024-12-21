@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <OutputType>WinExe</OutputType>
     <RootNamespace>KoopaHarmony</RootNamespace>
     <PublishUrl>publish\</PublishUrl>
@@ -25,14 +25,6 @@
   <PropertyGroup>
     <ApplicationIcon>koopaIcon.ico</ApplicationIcon>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="MediaServer">
-      <HintPath>..\..\..\..\..\Downloads\2008_8_fflibnet_20080817\Release\MediaServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Syroot.BinaryData">
-      <HintPath>..\..\NitroStudio\NitroStudio\Syroot.BinaryData.dll</HintPath>
-    </Reference>
-  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
@@ -190,9 +182,15 @@
     <Content Include="koopaIcon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="CSCore" Version="1.2.1.2" />
+    <PackageReference Include="EndianBinaryIO" Version="2.1.1" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="NAudio" Version="1.10.0" />
-    <PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.2" />
+    <PackageReference Include="NAudio" Version="2.2.1" />
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="9.0.0" />
+    <PackageReference Include="Syroot.BinaryData" Version="5.2.2" />
+    <PackageReference Include="Syroot.BinaryData.Memory" Version="5.2.2" />
+    <PackageReference Include="Syroot.BinaryData.Serialization" Version="5.2.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CSCore\CSCore.csproj" />
   </ItemGroup>
 </Project>

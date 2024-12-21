@@ -4,6 +4,7 @@
     <OutputType>Exe</OutputType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <RootNamespace>SolarFileLoader</RootNamespace>
+    <AddSyntheticProjectReferencesForSolutionDependencies>false</AddSyntheticProjectReferencesForSolutionDependencies>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Crc32.NET" Version="1.2.0" />

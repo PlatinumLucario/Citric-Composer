@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+#pragma warning disable CA1416 // Validate platform compatibility
 namespace KoopaHarmony
 {
     public partial class SaveQuitDialog : Form

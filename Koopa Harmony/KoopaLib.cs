@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using Syroot.BinaryData;
+using Kermalis.EndianBinaryIO;
 using System.Diagnostics;
 using CitraFileLoader;
 
@@ -18,9 +18,9 @@ namespace KoopaLib
         //Path.
         string path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
-        public char[] magic; //RIFF.
+        public string magic; //RIFF.
         public UInt32 chunkSize; //Size of chunks.
-        public char[] identifier; //WAVE.
+        public string identifier; //WAVE.
 
         public fmtBlock fmt; //FMT
         public dataBlock data; //DATA
@@ -30,7 +30,7 @@ namespace KoopaLib
         public struct fmtBlock
         {
 
-            public char[] magic; //fmt .
+            public string magic; //fmt .
             public UInt32 chunkSize; //Size of chunk.
             public UInt16 chunkFormat; //1 = PCM.
             public UInt16 numChannels; //1 - Mono, 2 - Stereo, etc.
@@ -47,7 +47,7 @@ namespace KoopaLib
         public struct dataBlock
         {
 
-            public char[] magic; //data.
+            public string magic; //data.
             public UInt32 chunkSize; //==sampleRate * numChannels * bitsPerSample/8
             public byte[] data; //Raw sound data.
 
@@ -61,15 +61,15 @@ namespace KoopaLib
 
             //New stream stuff.
             MemoryStream src = new MemoryStream(b);
-            BinaryReader br = new BinaryReader(src);
+            EndianBinaryReader br = new EndianBinaryReader(src);
 
             //Read stuff.
-            magic = br.ReadChars(4);
+            magic = br.ReadString_Count(4);
             chunkSize = br.ReadUInt32();
-            identifier = br.ReadChars(4);
+            identifier = br.ReadString_Count(4);
 
             //FMT
-            fmt.magic = br.ReadChars(4);
+            fmt.magic = br.ReadString_Count(4);
             fmt.chunkSize = br.ReadUInt32();
             fmt.chunkFormat = br.ReadUInt16();
             fmt.numChannels = br.ReadUInt16();
@@ -77,12 +77,12 @@ namespace KoopaLib
             fmt.byteRate = br.ReadUInt32();
             fmt.blockAlign = br.ReadUInt16();
             fmt.bitsPerSample = br.ReadUInt16();
-            fmt.restOfData = br.ReadBytes((int)fmt.chunkSize - 16);
+            br.ReadBytes(fmt.restOfData = new byte[(int)fmt.chunkSize - 16]);
 
             //DATA
-            data.magic = br.ReadChars(4);
+            data.magic = br.ReadString_Count(4);
             data.chunkSize = br.ReadUInt32();
-            data.data = br.ReadBytes((int)data.chunkSize);
+            br.ReadBytes(data.data = new byte[(int)data.chunkSize]);
 
         }
 
@@ -126,15 +126,15 @@ namespace KoopaLib
 
             //Data.
             data.chunkSize = (UInt32)data.data.Length;
-            data.magic = "data".ToCharArray();
+            data.magic = "data".ToString();
 
             //FMT.
-            fmt.magic = "fmt ".ToCharArray();
+            fmt.magic = "fmt ".ToString();
             fmt.chunkSize = 16 + (UInt32)fmt.restOfData.Length;
 
             //Total.
-            magic = "RIFF".ToCharArray();
-            identifier = "WAVE".ToCharArray();
+            magic = "RIFF".ToString();
+            identifier = "WAVE".ToString();
             chunkSize = fmt.chunkSize + data.chunkSize + 20;
 
         }
@@ -195,11 +195,11 @@ namespace KoopaLib
                     soundData[i] = new List<byte>();
 
                     MemoryStream src = new MemoryStream(data.data);
-                    BinaryDataReader br = new BinaryDataReader(src);
+                    EndianBinaryReader br = new EndianBinaryReader(src);
 
-                    br.Position = i;
+                    br.Stream.Position = i;
 
-                    while (br.Position < data.chunkSize)
+                    while (br.Stream.Position < data.chunkSize)
                     {
 
                         soundData[i].Add(br.ReadByte());
@@ -229,11 +229,11 @@ namespace KoopaLib
                     soundData[i] = new List<UInt16>();
 
                     MemoryStream src = new MemoryStream(data.data);
-                    BinaryDataReader br = new BinaryDataReader(src);
+                    EndianBinaryReader br = new EndianBinaryReader(src);
 
-                    br.Position = i * 2;
+                    br.Stream.Position = i * 2;
 
-                    while (br.Position < data.chunkSize)
+                    while (br.Stream.Position < data.chunkSize)
                     {
 
                         soundData[i].Add(br.ReadUInt16());
@@ -274,7 +274,7 @@ namespace KoopaLib
 
 
     //DSP File.
-    public class dsp
+    public class Dsp
     {
 
         public UInt32 numSamples; //Wave data size divided by 4.
@@ -313,8 +313,8 @@ namespace KoopaLib
         {
 
             MemoryStream src = new MemoryStream(b);
-            BinaryDataReader br = new BinaryDataReader(src);
-            br.ByteOrder = ByteOrder.BigEndian;
+            EndianBinaryReader br = new EndianBinaryReader(src);
+            br.Endianness = Endianness.BigEndian;
 
             numSamples = br.ReadUInt32();
             adpcmNibbles = br.ReadUInt32();
@@ -325,7 +325,7 @@ namespace KoopaLib
             loopStart = br.ReadUInt32();
             loopEnd = br.ReadUInt32();
             always2 = br.ReadUInt32();
-            coefficients = br.ReadInt16s(16);
+            br.ReadInt16s(coefficients = new short[16]);
 
             gain = br.ReadUInt16();
             predictor = br.ReadUInt16();
@@ -339,9 +339,9 @@ namespace KoopaLib
             channelCount = br.ReadUInt16();
             blockFrameCount = br.ReadUInt16();
 
-            padding = br.ReadUInt16s(9);
+            br.ReadUInt16s(padding = new ushort[9]);
 
-            data = br.ReadBytes((int)adpcmNibbles / 2);
+            br.ReadBytes(data = new byte[(int)adpcmNibbles / 2]);
 
         }
 
@@ -354,35 +354,35 @@ namespace KoopaLib
         {
 
             MemoryStream o = new MemoryStream();
-            BinaryDataWriter bw = new BinaryDataWriter(o);
-            bw.ByteOrder = ByteOrder.BigEndian;
+            EndianBinaryWriter bw = new EndianBinaryWriter(o);
+            bw.Endianness = Endianness.BigEndian;
 
-            bw.Write(numSamples);
-            bw.Write(adpcmNibbles);
-            bw.Write(sampleRate);
+            bw.WriteUInt32(numSamples);
+            bw.WriteUInt32(adpcmNibbles);
+            bw.WriteUInt32(sampleRate);
 
-            bw.Write(loopFlag);
-            bw.Write(format);
-            bw.Write(loopStart);
-            bw.Write(loopEnd);
-            bw.Write(always2);
-            bw.Write(coefficients);
+            bw.WriteUInt16(loopFlag);
+            bw.WriteUInt16(format);
+            bw.WriteUInt32(loopStart);
+            bw.WriteUInt32(loopEnd);
+            bw.WriteUInt32(always2);
+            bw.WriteInt16s(coefficients);
 
-            bw.Write(gain);
-            bw.Write(predictor);
-            bw.Write(yn1);
-            bw.Write(yn2);
+            bw.WriteUInt16(gain);
+            bw.WriteUInt16(predictor);
+            bw.WriteUInt16(yn1);
+            bw.WriteUInt16(yn2);
 
-            bw.Write(loopPredictor);
-            bw.Write(loopYn1);
-            bw.Write(loopYn2);
+            bw.WriteUInt16(loopPredictor);
+            bw.WriteUInt16(loopYn1);
+            bw.WriteUInt16(loopYn2);
 
-            bw.Write(channelCount);
-            bw.Write(blockFrameCount);
+            bw.WriteUInt16(channelCount);
+            bw.WriteUInt16(blockFrameCount);
 
-            bw.Write(padding);
+            bw.WriteUInt16s(padding);
 
-            bw.Write(data);
+            bw.WriteBytes(data);
 
             return o.ToArray();
 
@@ -397,7 +397,7 @@ namespace KoopaLib
     /// </summary>
     public class CISP {
 
-        public char[] magic; //CISP.
+        public string magic; //CISP.
 
         public streamInfo stream; //Stream Data.
         public List<trackInfo> tracks; //Tracks.
@@ -405,7 +405,7 @@ namespace KoopaLib
         public UInt32 seekSize; //Seek Size.
         public byte[] seekBlock; //Seek block.
 
-        public char[] channelMagic; //CHAN.
+        public string channelMagic; //CHAN.
         public List<UInt16[]> channelData; //Channel data.
 
 
@@ -415,7 +415,7 @@ namespace KoopaLib
         /// </summary>
         public struct streamInfo {
 
-            public char[] magic; //STRM.
+            public string magic; //STRM.
             public byte loop; //I'm no expert, but this probably signifies a loop.
             public byte numberOfChannels; //How many channels.
             public UInt32 sampleRate; //Rate of sampling.
@@ -433,7 +433,7 @@ namespace KoopaLib
         /// </summary>
         public struct trackInfo {
 
-            public char[] magic; //TRAC.
+            public string magic; //TRAC.
             public byte volume; //Volume.
             public byte pan; //Pan.
             public UInt16 flags; //Front Bypass???
@@ -451,14 +451,14 @@ namespace KoopaLib
         public void load(byte[] b) {
 
             MemoryStream src = new MemoryStream(b);
-            BinaryDataReader br = new BinaryDataReader(src);
-            br.ByteOrder = ByteOrder.LittleEndian;
+            EndianBinaryReader br = new EndianBinaryReader(src);
+            br.Endianness = Endianness.LittleEndian;
 
             //Magic.
-            magic = br.ReadChars(4);
+            magic = br.ReadString_Count(4);
 
             //Stream.
-            stream.magic = br.ReadChars(4);
+            stream.magic = br.ReadString_Count(4);
             stream.loop = br.ReadByte();
             stream.numberOfChannels = br.ReadByte();
             stream.sampleRate = br.ReadUInt32();
@@ -473,7 +473,7 @@ namespace KoopaLib
             {
 
                 trackInfo t = new trackInfo();
-                t.magic = br.ReadChars(4);
+                t.magic = br.ReadString_Count(4);
                 t.volume = br.ReadByte();
                 t.pan = br.ReadByte();
                 t.flags = br.ReadUInt16();
@@ -489,10 +489,10 @@ namespace KoopaLib
 
             //Seek.
             seekSize = br.ReadUInt32();
-            seekBlock = br.ReadBytes((int)seekSize);
+            br.ReadBytes(seekBlock = new byte[(int)seekSize]);
 
             //Channels.
-            channelMagic = br.ReadChars(4);
+            channelMagic = br.ReadString_Count(4);
             channelData = new List<UInt16[]>();
             for (int i = 0; i < stream.numberOfChannels; i++)
             {
@@ -515,45 +515,45 @@ namespace KoopaLib
             update();
 
             MemoryStream o = new MemoryStream();
-            BinaryDataWriter bw = new BinaryDataWriter(o);
-            bw.ByteOrder = ByteOrder.LittleEndian;
+            EndianBinaryWriter bw = new EndianBinaryWriter(o);
+            bw.Endianness = Endianness.LittleEndian;
 
             //Magic.
-            bw.Write(magic);
+            bw.WriteChars(magic);
 
             //Stream.
-            bw.Write(stream.magic);
-            bw.Write(stream.loop);
-            bw.Write(stream.numberOfChannels);
-            bw.Write(stream.sampleRate);
-            bw.Write(stream.loopStart);
-            bw.Write(stream.loopEnd);
-            bw.Write(stream.numberOfTracks);
-            bw.Write(stream.sampleSize);
+            bw.WriteChars(stream.magic);
+            bw.WriteByte(stream.loop);
+            bw.WriteByte(stream.numberOfChannels);
+            bw.WriteUInt32(stream.sampleRate);
+            bw.WriteUInt32(stream.loopStart);
+            bw.WriteUInt32(stream.loopEnd);
+            bw.WriteUInt32(stream.numberOfTracks);
+            bw.WriteUInt32(stream.sampleSize);
 
             //Tracks.
             foreach (trackInfo t in tracks) {
 
-                bw.Write(t.magic);
-                bw.Write(t.volume);
-                bw.Write(t.pan);
-                bw.Write(t.flags);
-                bw.Write(t.channelCount);
+                bw.WriteChars(t.magic);
+                bw.WriteByte(t.volume);
+                bw.WriteByte(t.pan);
+                bw.WriteUInt16(t.flags);
+                bw.WriteUInt32(t.channelCount);
                 foreach (byte c in t.channels) {
-                    bw.Write(c);
+                    bw.WriteByte(c);
                 }
 
             }
 
             //Seek.
-            bw.Write(seekSize);
-            bw.Write(seekBlock);
+            bw.WriteUInt32(seekSize);
+            bw.WriteBytes(seekBlock);
 
             //Channels.
-            bw.Write(channelMagic);
+            bw.WriteChars(channelMagic);
             foreach (UInt16[] a in channelData) {
                 foreach (UInt16 c in a) {
-                bw.Write(c);}
+                bw.WriteUInt16(c);}
             }
 
             //Return final file.
@@ -567,8 +567,8 @@ namespace KoopaLib
         /// </summary>
         public void update() {
 
-            magic = "CISP".ToCharArray();
-            stream.magic = "STRM".ToCharArray();
+            magic = "CISP".ToString();
+            stream.magic = "STRM".ToString();
             stream.numberOfChannels = (byte)channelData.Count;
             stream.numberOfTracks = (UInt32)tracks.Count;
             if (stream.numberOfChannels == 0)
@@ -580,11 +580,11 @@ namespace KoopaLib
             }
             seekBlock = new byte[0];
             seekSize = (UInt32)seekBlock.Length;
-            channelMagic = "CHAN".ToCharArray();
+            channelMagic = "CHAN".ToString();
             for (int i = 0; i < tracks.Count; i++) {
                 trackInfo t = tracks[i];
                 t.channelCount = (UInt32)tracks[i].channels.Count;
-                t.magic = "TRAC".ToCharArray();
+                t.magic = "TRAC".ToString();
                 tracks[i] = t;
             }
 
@@ -609,11 +609,11 @@ namespace KoopaLib
             r.fmt.restOfData = new byte[0];
 
             MemoryStream o = new MemoryStream();
-            BinaryDataWriter bw = new BinaryDataWriter(o);
+            EndianBinaryWriter bw = new EndianBinaryWriter(o);
             for (int i = 0; i < channelData[0].Length; i++) {
 
                 for (int j = 0; j < stream.numberOfChannels; j++) {
-                    bw.Write(channelData[j][i]);
+                    bw.WriteUInt16(channelData[j][i]);
                 }
 
             }
@@ -682,7 +682,7 @@ namespace KoopaLib
     /// <summary>
     /// Binary Beat Identification.
     /// </summary>
-    public class bbid {
+    public class Bbid {
 
         public byte tempo; //Speed to dance at?
         public byte padding; //Always 0.
@@ -700,17 +700,21 @@ namespace KoopaLib
         public void load(byte[] b) {
 
             MemoryStream src = new MemoryStream(b);
-            BinaryDataReader br = new BinaryDataReader(src);
-            br.ByteOrder = ByteOrder.LittleEndian;
+            EndianBinaryReader br = new EndianBinaryReader(src);
+            br.Endianness = Endianness.LittleEndian;
             tempo = br.ReadByte();
             padding = br.ReadByte();
             count = br.ReadByte();
             unknown = br.ReadByte();
-            sampleNumbers = br.ReadUInt32s((int)count).ToList();
-            br.ReadUInt32s(64 - (int)count);
-            danceMoves = br.ReadBytes((int)count).ToList();
-            br.ReadBytes(64 - (int)count);
-            actionNumbers = br.ReadUInt32s(64);
+            sampleNumbers = new List<uint>((int)count).ToList();
+            br.ReadUInt32s(sampleNumbers.ToArray());
+            var sample1 = new uint[64 - (int)count];
+            br.ReadUInt32s(sample1);
+            danceMoves = new List<byte>((int)count).ToList();
+            br.ReadBytes(danceMoves.ToArray());
+            var sample2 = new byte[64 - (int)count];
+            br.ReadBytes(sample2);
+            br.ReadUInt32s(actionNumbers = new uint[64]);
 
         }
 
@@ -721,24 +725,24 @@ namespace KoopaLib
         public byte[] toBytes() {
 
             MemoryStream o = new MemoryStream();
-            BinaryDataWriter bw = new BinaryDataWriter(o);
-            bw.ByteOrder = ByteOrder.LittleEndian;
+            EndianBinaryWriter bw = new EndianBinaryWriter(o);
+            bw.Endianness = Endianness.LittleEndian;
 
-            bw.Write(tempo);
-            bw.Write((byte)0);
-            bw.Write((byte)sampleNumbers.Count());
-            bw.Write(unknown);
-            bw.Write(sampleNumbers.ToArray());
+            bw.WriteByte(tempo);
+            bw.WriteByte((byte)0);
+            bw.WriteByte((byte)sampleNumbers.Count());
+            bw.WriteByte(unknown);
+            bw.WriteUInt32s(sampleNumbers.ToArray());
             for (int i = 0; i < 64 - sampleNumbers.Count; i++) {
-                bw.Write((UInt32)0);
+                bw.WriteUInt32((UInt32)0);
             }
-            bw.Write(danceMoves.ToArray());
+            bw.WriteBytes(danceMoves.ToArray());
             for (int i = 0; i < 64 - sampleNumbers.Count; i++)
             {
-                bw.Write((byte)0);
+                bw.WriteByte((byte)0);
             }
             for (int i = 0; i < 64; i++) {
-                bw.Write((UInt32)0x4c484440);
+                bw.WriteUInt32((UInt32)0x4c484440);
             }
 
             return o.ToArray();

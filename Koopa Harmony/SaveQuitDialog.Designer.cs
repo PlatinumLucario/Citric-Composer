@@ -100,6 +100,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button YesButton;
         private System.Windows.Forms.Button NoButton;
-        private System.Windows.Forms.Button CancelButton;
+        private new System.Windows.Forms.Button CancelButton;
     }
 }

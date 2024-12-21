@@ -11,6 +11,9 @@
     <OutputPath>..\Citric Composer\bin\Debug\</OutputPath>
   </PropertyGroup>
   <PropertyGroup>
+    <AddSyntheticProjectReferencesForSolutionDependencies>false</AddSyntheticProjectReferencesForSolutionDependencies>
+  </PropertyGroup>
+  <PropertyGroup>
     <ApplicationIcon>red.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>

@@ -12,12 +12,12 @@ using CitraFileLoader;
 using KoopaLib;
 using NAudio.Wave;
 using System.Threading;
-using Syroot.BinaryData;
-using Softpae.Media;
+using Kermalis.EndianBinaryIO;
 using CSCore;
 using System.Reflection;
 using System.Diagnostics;
 
+#pragma warning disable CA1416 // Validate platform compatibility
 namespace KoopaHarmony
 {
     public partial class KoopaHarmony : Form
@@ -62,7 +62,7 @@ namespace KoopaHarmony
         public string isabellePath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
         public bool idFileOpen = false; //File ID Open.
         public string idFileNamePath = ""; //Id File Name Path.
-        public bbid idFile; //Id File.
+        public Bbid idFile; //Id File.
         public int koopaAnimationCounter = 0; //0=Idle, 1=Left Swing 2=Cheer 3=Right Swing
         public Image idleImg = Bitmap.FromFile("Data/Image/anim/idle.png");
         public Image leftSwingImg = Bitmap.FromFile("Data/Image/anim/left.png");
@@ -115,7 +115,7 @@ namespace KoopaHarmony
                 this.Text = "Koopa Harmony - New Beat.bbid";
 
                 //Make new BBID.
-                idFile = new bbid();
+                idFile = new Bbid();
                 idFile.actionNumbers = new UInt32[64];
                 idFile.danceMoves = new List<byte>();
                 idFile.padding = 0;
@@ -729,7 +729,7 @@ namespace KoopaHarmony
                     trackPanel.Hide();
                     noInfoPanel.Show();
 
-                    idFile = new bbid();
+                    idFile = new Bbid();
                     idFile.load(File.ReadAllBytes(openID.FileName));
 
                     idFileOpen = true;
@@ -836,8 +836,8 @@ namespace KoopaHarmony
 
                 //Write the RIFF.
                 MemoryStream channelData = new MemoryStream();
-                BinaryDataWriter bw = new BinaryDataWriter(channelData);
-                bw.Write(file.channelData[i]);
+                EndianBinaryWriter bw = new EndianBinaryWriter(channelData);
+                bw.WriteUInt16s(file.channelData[i]);
 
                 players[i].file = channelData.ToArray();
                 players[i].player = new WaveOutEvent();
@@ -1273,11 +1273,11 @@ namespace KoopaHarmony
                             soundData[i] = new List<UInt16>();
 
                             MemoryStream src = new MemoryStream(r.data.data);
-                            BinaryDataReader br = new BinaryDataReader(src);
+                            EndianBinaryReader br = new EndianBinaryReader(src);
 
-                            br.Position = i * 2;
+                            br.Stream.Position = i * 2;
 
-                            while (br.Position < r.data.chunkSize)
+                            while (br.Stream.Position < r.data.chunkSize)
                             {
 
                                 soundData[i].Add(br.ReadUInt16());
@@ -1379,7 +1379,7 @@ namespace KoopaHarmony
                                     t.channelCount = t2.byteTable.count;
                                     t.channels = t2.byteTable.channelIndexes;
                                     t.flags = t2.flags;
-                                    t.magic = "TRAC".ToCharArray();
+                                    t.magic = "TRAC".ToString();
                                     t.pan = t2.pan;
                                     t.volume = t2.volume;
                                     file.tracks.Add(t);
@@ -1572,7 +1572,7 @@ namespace KoopaHarmony
                 this.Text = "Koopa Harmony";
 
                 //Make new BBID.
-                idFile = new bbid();
+                idFile = new Bbid();
                 idFile.actionNumbers = new UInt32[64];
                 idFile.danceMoves = new List<byte>();
                 idFile.padding = 0;
